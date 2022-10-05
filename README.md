@@ -1,2 +1,2 @@
 # MemoAplication
-Práctica de Retrofit y recyclerview
+Retrofit y recyclerview
