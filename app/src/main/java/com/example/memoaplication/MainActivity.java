@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.RecycleView);
-        pokeApi.getPokemonById(148).enqueue(new Callback<PokemonResponse>() {
+        pokeApi.getPokemonById(147).enqueue(new Callback<PokemonResponse>() {
             @Override
             public void onResponse(Call<PokemonResponse> call, Response<PokemonResponse> response) {
                 if(response.isSuccessful()){
