@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.memoaplication.api.ListPokemonResponse;
 import com.example.memoaplication.api.PokeApi;
-import com.example.memoaplication.api.PokemonResponse;
 import com.example.memoaplication.api.RetrofitClient;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,21 +27,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.RecycleView);
-        pokeApi.getPokemonById(146).enqueue(new Callback<PokemonResponse>() {
-            @Override
-            public void onResponse(Call<PokemonResponse> call, Response<PokemonResponse> response) {
-                if(response.isSuccessful()){
-                    Log.d("Pokemon", response.body().getName());
-                }else{
 
+        pokeApi.getPokemonByLimit(151).enqueue(new Callback<ListPokemonResponse>() {
+            @Override
+            public void onResponse(Call<ListPokemonResponse> call, Response<ListPokemonResponse> response) {
+                if(response.isSuccessful()){
+                    for(ListPokemonResponse.Pokemon pokemon : response.body().getPokemons()){
+                        Log.d("Pokemon: ", pokemon.getName());
+                    }
                 }
             }
 
             @Override
-            public void onFailure(Call<PokemonResponse> call, Throwable t) {
+            public void onFailure(Call<ListPokemonResponse> call, Throwable t) {
 
             }
         });
-
     }
 }
