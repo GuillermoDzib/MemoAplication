@@ -11,7 +11,7 @@ public interface PokeApi {
     @GET("pokemon/{id}/")
     Call<PokemonResponse> getPokemonById(@Path("id") int id);
 
-    @GET("pokemon/{id}/")
+    @GET("pokemon/{name}/")
     Call<PokemonResponse> getPokemonByName(@Path("name") String name);
 
     @GET("pokemon")
